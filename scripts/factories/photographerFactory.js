@@ -5,15 +5,16 @@ function photographerFactory(data) {
     const picture = `assets/photographers/Photographers-ID-Photos/${portrait}`;
 
     function createUserCard() {
-        return article = ` <a href="photographer.html?id=${id}">
-                                <article>
-                                    <img src="${picture}" alt="Photo de ${name}">
-                                    <h2>${name}</h2>
-                                    <p class="localisation">${city}, ${country}</p>
-                                    <p>${tagline}</p>
-                                    <p class="price">${price}€/jour</p>
-                                 </article>  
-                             </a> `;
+        return article = ` 	<article>
+                                <a href="photographer.html?id=${id}">
+                                    <img src="${picture}" alt="Photo de ${name}" tabindex="0">
+                                    <h2 tabindex="0">${name}</h2>
+								</a>
+								<p class="localisation" tabindex="0">${city}, ${country}</p>
+								<p tabindex="0">${tagline}</p>
+								<p class="price" tabindex="0">${price}€/jour</p>
+							</article>  
+                              `;
 
         // const article = document.createElement("article");
         // const img = document.createElement("img");
@@ -44,12 +45,12 @@ function photographerFactory(data) {
 
     function getUserInfos() {
         return article = `<div class="infos">
-							<h2>${name}</h2>
-							<p class="localisation">${city}, ${country}</p>
-							<p>${tagline}</p>
-							<p class="price">${price}€/jour</p> 
+							<h2 tabindex="0">${name}</h2>
+							<p class="localisation" tabindex="0">${city}, ${country}</p>
+							<p tabindex="0">${tagline}</p>
+							<p class="price" tabindex="0">${price}€/jour</p> 
 						</div>
-						<button class="contact_button" id="contact-form">Contactez-moi</button>
+						<button class="contact_button" id="contact-button" tabindex="0">Contactez-moi</button>
 						<img src="${picture}" alt="Photo de ${name}">
 						`;
     }

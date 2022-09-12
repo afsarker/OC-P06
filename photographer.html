@@ -10,24 +10,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <header>
-    <a href="index.html">
+  <header role="banner">
+    <a href="index.html" role="img" aria-label="Fisheye Home page">
       <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
   </header>
   <main id="main">
     <div class="photograph-header"></div>
+    Trier par :
+    <div class="photograph-content"></div>
   </main>
   <div id="contact_modal">
     <div class="modal" id="modal" tabindex="0">
       <header>
-        <h2>Contactez-moi<div id="name"></div>
+        <h2 role="heading" aria-level="2">Contactez-moi<div id="name"></div>
         </h2>
-        <img src="assets/icons/close.svg" id="close-form" tabindex="0" />
+        <img src="assets/icons/close.svg" id="close-form" alt="Close Contact Form" tabindex="0" />
       </header>
       <form id="form">
         <div>
@@ -44,14 +47,22 @@
         </div>
         <div>
           <label for="message">Votre Message</label>
-          <textarea id="message" tabindex="0"></textarea>
+          <textarea id="message" tabindex="0" aria-labelledby="Your Message"></textarea>
         </div>
-        <button class="contact_button" tabindex="0">Envoyer</button>
+        <button class="contact_button" role="button" aria-label="Send" tabindex="0">Envoyer</button>
       </form>
     </div>
   </div>
+  <div id="lightbox">
+    <div class="close"><i class="fa-solid fa-xmark"></i></div>
+    <div class="left"><i class="fa-solid fa-chevron-left"></i></div>
+    <div class="img"><img id="img" src="" alt="" /></div>
+    <div class="video"><video id="video" controls></video></div>
+    <div class="right"><i class="fa-solid fa-chevron-right"></i></div>
+  </div>
   <script src="scripts/utils/Api.js"></script>
   <script src="scripts/factories/photographerFactory.js"></script>
+  <script src="scripts/factories/MediaFactory.js"></script>
   <script src="scripts/pages/photographer.js" type="module"></script>
   <script src="scripts/utils/contactForm.js"></script>
 </body>

@@ -1,10 +1,15 @@
 @import url("photographer.css");
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-
 
 header {
     display: flex;
@@ -29,16 +34,6 @@ a {
     color: inherit;
 }
 
-.localisation {
-    color: #901C1C;
-    font-size: 18px;
-}
-
-.price {
-    color: #757575;
-    font-size: 13px;
-}
-
 // Page d'accueil
 .photographer_section {
     display: grid;
@@ -52,19 +47,46 @@ a {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
 
-    img {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        display: block;
-        margin: 0 auto;
-    }
+        .reflect {
+            position: relative;
+            // height: 100px;
+            // width: 250px;
+        }
 
-    h2 {
-        color: #D3573C;
-        font-size: 36px;
+        .reflect::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 20%;
+            width: 100%;
+            background: linear-gradient(transparent, #ffffff40);
+            content: "";
+        }
+
+        img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #D3573C;
+            font-size: 36px;
+        }
+
+        .localisation {
+            color: #901C1C;
+            font-size: 18px;
+        }
+
+        .price {
+            color: #757575;
+            font-size: 13px;
+        }
     }
 }
