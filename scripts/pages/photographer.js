@@ -4,7 +4,7 @@ const nameTitle = document.getElementById('name');
 console.log(id);
 
 async function getPhotographersFromApi() {
-    const photographersApi = new PhotographersApi("/Projet-6/data/photographers.json");
+    const photographersApi = new PhotographersApi("/data/photographers.json");
 
     const photographers = await photographersApi.getPhotographerInfos();
 
