@@ -1,4 +1,6 @@
-let id = new URLSearchParams(location.search).get('id');
+const id = new URLSearchParams(location.search).get('id');
+const nameTitle = document.getElementById('name');
+
 console.log(id);
 
 async function getPhotographersFromApi() {
@@ -19,18 +21,30 @@ async function displayData(photographers) {
             const photographerModel = photographerFactory(photographers[i]);
             const userCardDOM = photographerModel.getUserInfos();
             photographersSection.innerHTML += userCardDOM;
+            nameTitle.innerText += (photographers[i].name)
         }
     }
 
     // ouvre et ferme le formulaire 
-    const contactForm = document.getElementById('contact-form');
+    const contactForm = document.getElementById('contact-button');
     const closeForm = document.getElementById('close-form');
+    const modal = document.getElementById('modal');
 
     contactForm.addEventListener('click', () => {
         displayModal();
     });
     closeForm.addEventListener('click', () => {
         closeModal();
+    });
+    modal.addEventListener('keyup', (e) => {
+        if (e.keyCode == 27) { //la touche echape sur le formulaire ferme la modale
+            closeModal();
+        }
+    });
+    closeForm.addEventListener('keyup', (e) => {
+        if (e.keyCode == 13) { //la touche entree sur l'icone ferme la modale
+            closeModal();
+        }
     });
 };
 
@@ -40,3 +54,8 @@ async function init() {
 };
 
 init();
+
+const form = document.getElementById('form');
+form.addEventListener('submit', e => {
+    e.preventDefault();
+})

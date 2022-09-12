@@ -1,0 +1,128 @@
+// #contact_modal {
+//     display: none;
+// }
+
+.photograph-header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 35px 35px;
+    margin: auto;
+    top: 20px;
+    position: relative;
+    header {
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        img {
+            cursor: pointer;
+            position: absolute;
+            right: 35px;
+            top: 35px;
+        }
+        h2 {
+            font-size: 50px;
+            font-weight: normal;
+            text-align: left;
+            margin: 0 0 15px;
+        }
+    }
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+        color: #312E2E;
+        font-size: 25px;
+    }    
+    div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 5px;
+    }
+    input {
+        width: 100%;
+        height: 45px;
+        border: none;
+        border-radius: 5px;
+    }
+    textarea {
+        width: 100%;
+        height: 80px;
+        border: none;
+        border-radius: 5px;
+        resize: none;
+        margin-bottom: 10px;
+    }
+    button {
+        &:hover, &:focus {
+            background-color: #D3573C;
+            color: black;
+        }
+        &:focus {
+            outline: #901C1C solid;
+        }
+    }
+}
+
+#contact_modal {
+    position: fixed;
+    top: 0;
+    background: #0009;
+    width: 100%;
+    height: 100%;
+}
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    h2 {
+        color: #D3573C;
+        font-size: 36px;
+    }
+    #contact-button {
+        &:hover, &:focus {
+            background-color: #D3573C;
+            color: black;
+        }
+        &:focus {
+            outline: #901C1C solid;
+        }
+    }
+}

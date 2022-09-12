@@ -16,24 +16,37 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
   </header>
   <main id="main">
     <div class="photograph-header"></div>
   </main>
   <div id="contact_modal">
-    <div class="modal">
+    <div class="modal" id="modal" tabindex="0">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" id="close-form" />
+        <h2>Contactez-moi<div id="name"></div>
+        </h2>
+        <img src="assets/icons/close.svg" id="close-form" tabindex="0" />
       </header>
-      <form>
+      <form id="form">
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" tabindex="0" />
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div>
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" tabindex="0" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" tabindex="0" />
+        </div>
+        <div>
+          <label for="message">Votre Message</label>
+          <textarea id="message" tabindex="0"></textarea>
+        </div>
+        <button class="contact_button" tabindex="0">Envoyer</button>
       </form>
     </div>
   </div>
