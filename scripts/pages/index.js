@@ -1,7 +1,7 @@
 //récupere les données du json, les fetch, et renvoi la data (photographers) via PhotographersApi
 async function getPhotographersFromApi() {
-    const photographersApi =  new PhotographersApi("/data/photographers.json");
-    
+    const photographersApi = new PhotographersApi("/data/photographers.json");
+
     const photographers = await photographersApi.getPhotographerInfos();
 
     return photographers;
