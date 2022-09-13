@@ -1,19 +1,19 @@
 //récupere les données du json, les fetch, et renvoi la data (photographers) via PhotographersApi
-async function getPhotographersFromApi() {
+async function getPhotographersInfos() {
     const photographersApi = new PhotographersApi("/data/photographers.json");
 
-    const photographers = await photographersApi.getPhotographerInfos();
+    const photographersInfos = await photographersApi.getPhotographersInfos();
 
-    return photographers;
+    return photographersInfos;
 }
 
 // pour chaque photographe; on cree une card via createUserCard() de la factory
-async function displayPhotographers(photographers) {
+async function displayData(photographersInfos) {
     const photographersSection = document.querySelector(".photographer_section");
-    
-    photographers.forEach(photographer => {
+
+    photographersInfos.forEach(photographer => {
         const photographerModel = photographerFactory(photographer);
-        console.log(photographerModel);
+        // console.log(photographerModel);
         const userCard = photographerModel.createUserCard();
         photographersSection.innerHTML += userCard;
     });
@@ -21,9 +21,26 @@ async function displayPhotographers(photographers) {
 
 // récupere les données de l'api, et les affiche
 async function init() {
-    const photographers = await getPhotographersFromApi();
-    displayPhotographers(photographers);
+    const photographersInfos = await getPhotographersInfos();
+
+    displayData(photographersInfos);
+
+    preventSpace()
 };
 
-// on execute la fonction
+// on execute la fonction init
 init();
+
+// empêche de faire le scroll par default lorsque l'on clique sur la touche
+// espace pour les liens (logo et profils)
+function preventSpace() {
+    const links = document.querySelectorAll('a');
+    links.forEach(profil => {
+        profil.addEventListener('keypress', e => {
+            if (e.keyCode == 32) { //la touche espace renvoi l'utilisateur vers la page demandée
+                e.preventDefault();
+                e.target.click();
+            }
+        });
+    });
+}
