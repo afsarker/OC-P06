@@ -10,7 +10,7 @@ function mediaFactory(data) {
                                     <img src="${picture}" alt="${title}" aria-label="${title}" tabindex="0" />
                                     <div class="content-infos">
                                         <h2 class="title" tabindex="0">${title}</h2>
-                                        <p class="likes" tabindex="0">${likes} <i class="fa-solid fa-heart full-heart"></i></p>
+                                        <p class="likes" tabindex="0"><span>${likes}</span> <i class="fa-solid fa-heart full-heart"></i></p>
                                     </div>
                                 </article>`;
         } else {
@@ -21,7 +21,7 @@ function mediaFactory(data) {
                                     </video>
                                     <div class="content-infos">
                                         <h2 class="title" tabindex="0">${title}</h2>
-                                        <p class="likes" tabindex="0">${likes} <i class="fa-solid fa-heart full-heart"></i></p>
+                                        <p class="likes" tabindex="0"><span>${likes}</span> <i class="fa-solid fa-heart full-heart"></i></p>
                                     </div>
                                 </article>`;
         }

@@ -7,7 +7,6 @@
 main {
   margin: 0 100px;
 }
-
 main .photograph-header {
   display: flex;
   justify-content: space-around;
@@ -15,69 +14,190 @@ main .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
 }
-
 main .photograph-header .infos {
   height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
 main .photograph-header .localisation-tagline {
   display: flex;
   flex-direction: column;
   height: 30%;
   justify-content: space-between;
 }
-
 main .photograph-header img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
-
 main .photograph-header h2 {
   color: #D3573C;
   font-size: 36px;
 }
-
-main .photograph-header #contact-button:hover,
-main .photograph-header #contact-button:focus {
+main .photograph-header #contact-button:hover, main .photograph-header #contact-button:focus {
   background-color: #D3573C;
   color: black;
 }
-
 main .photograph-header #contact-button:focus {
   outline: #901C1C solid;
 }
-
+main .filter {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+main .filter .custom-select {
+  position: relative;
+  margin-left: 50px;
+}
+main .filter .custom-select li {
+  list-style-type: none;
+}
+main .filter .select {
+  width: 170px;
+  height: 64px;
+  cursor: pointer;
+  background-color: #911C1C;
+  border-radius: 5px;
+  position: relative;
+}
+main .filter .select_expand {
+  width: 0;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+main .filter .select_expand::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f104";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translate(-50%, -50%) rotate(90deg);
+  color: #fff;
+  font-size: 20px;
+  pointer-events: none;
+  z-index: 2;
+  color: #fff;
+  transition: all 250ms ease-in-out;
+}
+main .filter .select_expand:checked::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(-1);
+}
+main .filter .select_expandLabel {
+  display: block;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+main .filter .select_close {
+  display: none;
+}
+main .filter .select_closeLabel {
+  width: 170px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+main .filter .select_items {
+  width: 170px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  padding-top: 60px;
+}
+main .filter .select_input {
+  display: none;
+}
+main .filter .select_label {
+  display: block;
+  height: 0;
+  font-size: 1.2rem;
+  line-height: 60px;
+  overflow: hidden;
+  color: #fff;
+  background-color: #fff;
+  cursor: pointer;
+  padding-left: 20px;
+}
+main .filter .select_label-placeholder {
+  height: 60px;
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+main .filter .select_expand:checked + .select_closeLabel {
+  display: block;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options {
+  background: #911C1C;
+  border-radius: 0 0 5px 5px;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options .select_label {
+  height: 60px;
+  background: transparent;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options .select_label:hover {
+  background-color: #DB8876;
+  color: #000;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options + .select_expandLabel {
+  display: none;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options + .select_option {
+  border-radius: 5px;
+}
+main .filter .select_expand:checked + .select_closeLabel + .select_options .select_option:nth-child(2) .select_label:hover {
+  border-radius: 0 0 5px 5px;
+}
+main .filter .select_input:checked + .select_label {
+  height: 60px;
+  margin-top: -60px;
+  background-color: #911C1C;
+  border-radius: 5px;
+}
+main .filter .select .border-top {
+  display: block;
+  height: 100%;
+  width: 85%;
+  border-top: 1px solid #fff;
+}
+main .filter .select_input:checked + .select_label .border-top {
+  border-top: none;
+}
 main .photograph-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
-
 main .photograph-content article {
-  margin: 15px 0;
+  margin: 15px 25px 10px 0;
   width: 300px;
 }
-
 main .photograph-content article .content-infos {
   display: flex;
   justify-content: space-between;
   color: #901C1C;
 }
-
 main .photograph-content article .content-infos .title {
   width: 75%;
 }
-
 main .photograph-content article .content-infos .title,
 main .photograph-content article .content-infos .likes {
   font-size: 1.5vw;
 }
-
 main .photograph-content img,
 main .photograph-content video {
   width: 100%;
@@ -85,11 +205,9 @@ main .photograph-content video {
   border-radius: 5px;
   cursor: pointer;
 }
-
 main .photograph-content img {
   object-fit: cover;
 }
-
 main .photograph-content video {
   object-fit: fill;
 }
@@ -125,20 +243,17 @@ main .photograph-content video {
   top: 20px;
   position: relative;
 }
-
 .modal header {
   justify-content: space-between;
   width: 100%;
   height: 100%;
 }
-
 .modal header img {
   cursor: pointer;
   position: absolute;
   right: 35px;
   top: 35px;
 }
-
 .modal header h2 {
   font-size: 50px;
   font-weight: normal;
@@ -152,19 +267,16 @@ form {
   flex-direction: column;
   align-items: flex-start;
 }
-
 form label {
   color: #312E2E;
   font-size: 25px;
 }
-
 form div {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 5px;
 }
-
 form input {
   width: 100%;
   height: 45px;
@@ -173,7 +285,6 @@ form input {
   padding-left: 10px;
   font-family: "DM Sans", sans-serif;
 }
-
 form textarea {
   width: 100%;
   height: 80px;
@@ -185,13 +296,10 @@ form textarea {
   padding-top: 10px;
   font-family: "DM Sans", sans-serif;
 }
-
-form button:hover,
-form button:focus {
+form button:hover, form button:focus {
   background-color: #D3573C;
   color: black;
 }
-
 form button:focus {
   outline: #901C1C solid;
 }
@@ -214,7 +322,6 @@ form button:focus {
   transform: translate(-50%, -50%);
   background-color: #fff;
 }
-
 #lightbox .left,
 #lightbox .right {
   position: fixed;
@@ -224,15 +331,12 @@ form button:focus {
   color: #901C1C;
   cursor: pointer;
 }
-
 #lightbox .left {
   left: 100px;
 }
-
 #lightbox .right {
   right: 100px;
 }
-
 #lightbox .close {
   position: fixed;
   right: 50px;
@@ -241,7 +345,6 @@ form button:focus {
   color: #901C1C;
   cursor: pointer;
 }
-
 #lightbox img,
 #lightbox video {
   max-height: 95%;
@@ -252,6 +355,20 @@ form button:focus {
   transform: translate(-50%, -50%);
   object-fit: contain;
   border-radius: 10px;
+}
+
+#likes-price {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  width: 250px;
+  height: 50px;
+  position: fixed;
+  right: 5%;
+  bottom: 0;
+  background-color: #DB8876;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=photographer.css.map */
