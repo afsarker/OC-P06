@@ -184,3 +184,19 @@ function hide(element) {
 function show(element) {
     element.style.display = "block";
 }
+
+//Combobox
+
+const popularity = document.querySelector("#customselect-close");
+const date = document.querySelector("#customselect-date");
+const titre = document.querySelector("#customselect-titre");
+
+popularity.addEventListener('click', () => {
+    console.log(popularity.value)
+})
+date.addEventListener('click', () => {
+    console.log(date.value)
+})
+titre.addEventListener('click', () => {
+    console.log(titre.value)
+})
