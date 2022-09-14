@@ -65,6 +65,7 @@ main {
 
             li {
                 list-style-type: none;
+                z-index: 2;
             }
         }
 
@@ -258,10 +259,6 @@ main {
 
 // modal et formulaire 
 
-#contact_modal {
-    display: none;
-}
-
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -299,6 +296,7 @@ main {
             position: absolute;
             right: 35px;
             top: 35px;
+            width: 35px;
         }
 
         h2 {
@@ -364,11 +362,13 @@ form {
 }
 
 #contact_modal {
+    display: none;
     position: fixed;
     top: 0;
     background: #0009;
     width: 100%;
     height: 100%;
+    z-index: 2;
 }
 
 // Lightbox 
