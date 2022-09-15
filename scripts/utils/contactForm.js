@@ -9,7 +9,7 @@ function closeModal() {
 }
 
 // Gestion du submit
-const form = document.getElementById('form');
+const form = document.getElementById('formulaire-contact');
 form.addEventListener('submit', e => {
     const firstnameValue = document.getElementById('prenom').value;
     const lastnameValue = document.getElementById('nom').value;

@@ -16,7 +16,7 @@
 
 <body>
   <header role="banner">
-    <a href="index.html" role="img" aria-label="Fisheye Home page">
+    <a href="index.html" aria-label="Fisheye Home page">
       <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
   </header>
@@ -58,11 +58,10 @@
   <div id="contact_modal">
     <div class="modal" id="modal" tabindex="0">
       <header>
-        <h2 role="heading" aria-level="2">Contactez-moi<div id="name"></div>
-        </h2>
+        <h2 role="heading" aria-level="2">Contactez-moi<span id="name"></span></h2>
         <img src="assets/icons/close.svg" id="close-form" alt="Close Contact Form" tabindex="0" />
       </header>
-      <form id="form">
+      <form id="formulaire-contact">
         <div>
           <label for="prenom">Prénom</label>
           <input type="text" id="prenom" tabindex="0" />
@@ -77,7 +76,7 @@
         </div>
         <div>
           <label for="message">Votre Message</label>
-          <textarea id="message" tabindex="0" aria-labelledby="Your Message"></textarea>
+          <textarea id="message" tabindex="0" aria-labelledby="formulaire-contact message"></textarea>
         </div>
         <button class="contact_button" role="button" aria-label="Send" tabindex="0">Envoyer</button>
       </form>
@@ -86,7 +85,7 @@
   <div id="lightbox">
     <div class="close"><i class="fa-solid fa-xmark"></i></div>
     <div class="left" id="previous-media"><i class="fa-solid fa-chevron-left"></i></div>
-    <div class="img"><img id="img" src="" alt="lightbox image" /></div>
+    <div class="img"><img id="img" src="#" alt="lightbox image" /></div>
     <div class="video"><video id="video" controls></video></div>
     <div class="right" id="next-media"><i class="fa-solid fa-chevron-right"></i></div>
   </div>
@@ -94,11 +93,11 @@
     <div id="likes"></div>
     <div id="price"></div>
   </div>
-  <script src="scripts/utils/Api.js"></script>
-  <script src="scripts/factories/photographerFactory.js"></script>
-  <script src="scripts/factories/MediaFactory.js"></script>
-  <script src="scripts/pages/photographer.js" type="module"></script>
-  <script src="scripts/utils/contactForm.js"></script>
+  <script src="./scripts/utils/Api.js"></script>
+  <script src="./scripts/factories/photographerFactory.js"></script>
+  <script src="./scripts/factories/mediaFactory.js"></script>
+  <script src="./scripts/pages/photographer.js" type="module"></script>
+  <script src="./scripts/utils/contactForm.js"></script>
 </body>
 
 </html>
