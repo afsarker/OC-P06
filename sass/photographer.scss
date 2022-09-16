@@ -399,12 +399,13 @@ main {
 
     .left,
     .right {
+        cursor: pointer;
         position: fixed;
         top: 50%;
         transform: translateY(-50%);
         font-size: 2em;
         color: #901C1C;
-        cursor: pointer;
+        padding: 40px;
     }
 
     .left {
@@ -416,12 +417,13 @@ main {
     }
 
     .close {
+        cursor: pointer;
         position: fixed;
-        right: 50px;
-        top: 30px;
+        right: 30px;
+        top: 0px;
         font-size: 2em;
         color: #901C1C;
-        cursor: pointer;
+        padding: 30px;
     }
 
     img,

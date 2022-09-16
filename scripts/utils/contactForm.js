@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 function displayModal() {
     const modal = document.getElementById('contact_modal');
+    const contact_modal = document.getElementById('contact_modal');
     modal.style.display = 'block';
+    contact_modal.focus();
 }
 
 function closeModal() {

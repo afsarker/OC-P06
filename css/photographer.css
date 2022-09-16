@@ -332,12 +332,13 @@ main .photograph-content video {
 }
 #lightbox .left,
 #lightbox .right {
+  cursor: pointer;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   font-size: 2em;
   color: #901C1C;
-  cursor: pointer;
+  padding: 40px;
 }
 #lightbox .left {
   left: 100px;
@@ -346,12 +347,13 @@ main .photograph-content video {
   right: 100px;
 }
 #lightbox .close {
+  cursor: pointer;
   position: fixed;
-  right: 50px;
-  top: 30px;
+  right: 30px;
+  top: 0px;
   font-size: 2em;
   color: #901C1C;
-  cursor: pointer;
+  padding: 30px;
 }
 #lightbox img,
 #lightbox video {

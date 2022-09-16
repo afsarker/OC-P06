@@ -1,4 +1,6 @@
-// récupere les données du json, les fetch, et renvoi la data (photographers) via PhotographersApi
+/*global PhotographersApi, photographerFactory*/
+
+// récupere les données du json, les fetch, et renvoi la data (photographersInfos) via PhotographersApi
 async function getPhotographersInfos() {
     const photographersApi = new PhotographersApi('./data/photographers.json');
 
@@ -28,11 +30,9 @@ async function init() {
     preventSpace();
 }
 
-// on execute la fonction init
 init();
 
-// empêche de faire le scroll par default lorsque l'on clique sur la touche
-// espace pour les liens (logo et profils)
+// empêche de faire le scroll par default lorsque l'on clique sur la touche espace pour les liens (logo et profils)
 function preventSpace() {
     const links = document.querySelectorAll('a');
     links.forEach(profil => {

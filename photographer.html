@@ -25,7 +25,7 @@
     <div class="filter">
       <div>Trier par : </div>
       <div class="custom-select">
-        <ul class="select">
+        <ul role="navigation" class="select">
           <li>
             <input class="select_close" type="radio" name="customselect" id="customselect-close" value="popularite" />
             <span class="select_label select_label-placeholder">Popularité</span>
@@ -33,20 +33,24 @@
 
           <li class="select_items">
             <input class="select_expand" type="radio" name="customselect" id="customselect-opener" />
-            <label class="select_closeLabel" for="customselect-close"></label>
+            <label tabindex="0" class="select_closeLabel" for="customselect-close"></label>
 
             <ul class="select_options">
               <li class="select_option">
                 <input class="select_input" type="radio" name="customselect" id="customselect-date" value="date" />
-                <label class="select_label" for="customselect-date"><span class="border-top">Date</span></label>
+                <label tabindex="0" class="select_label" for="customselect-date">
+                  <span class="border-top">Date</span>
+                </label>
               </li>
               <li class="select_option">
                 <input class="select_input" type="radio" name="customselect" id="customselect-titre" value="titre" />
-                <label class="select_label" for="customselect-titre"><span class="border-top">Titre</span></label>
+                <label tabindex="0" class="select_label" for="customselect-titre">
+                  <span class="border-top">Titre</span>
+                </label>
               </li>
             </ul>
 
-            <label class="select_expandLabel" for="customselect-opener"></label>
+            <label tabindex="0" class="select_expandLabel" for="customselect-opener" aria-haspopup="true"></label>
 
           </li>
         </ul>
@@ -55,7 +59,7 @@
     </div>
     <div class="photograph-content"></div>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog">
     <div class="modal" id="modal" tabindex="0">
       <header>
         <h2 role="heading" aria-level="2">Contactez-moi<span id="name"></span></h2>
@@ -82,12 +86,12 @@
       </form>
     </div>
   </div>
-  <div id="lightbox">
-    <div class="close"><i class="fa-solid fa-xmark"></i></div>
-    <div class="left" id="previous-media"><i class="fa-solid fa-chevron-left"></i></div>
+  <div id="lightbox" role="dialog">
+    <div class="close" tabindex="0"><i class="fa-solid fa-xmark"></i></div>
+    <div class="left" id="previous-media" tabindex="0"><i class="fa-solid fa-chevron-left"></i></div>
     <div class="img"><img id="img" src="#" alt="lightbox image" /></div>
     <div class="video"><video id="video" controls></video></div>
-    <div class="right" id="next-media"><i class="fa-solid fa-chevron-right"></i></div>
+    <div class="right" id="next-media" tabindex="0"><i class="fa-solid fa-chevron-right"></i></div>
   </div>
   <div id="likes-price">
     <div id="likes"></div>
@@ -96,7 +100,7 @@
   <script src="./scripts/utils/Api.js"></script>
   <script src="./scripts/factories/photographerFactory.js"></script>
   <script src="./scripts/factories/mediaFactory.js"></script>
-  <script src="./scripts/pages/photographer.js" type="module"></script>
+  <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
 </body>
 

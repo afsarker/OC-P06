@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 class PhotographersApi {
     /**
-       *
-       * @param {string} url
-       */
+     *
+     * @param {string} url
+     */
     constructor(url) {
         this.url = url;
     }
