@@ -3,11 +3,13 @@ function displayModal() {
     const modal = document.getElementById('contact_modal');
     const contact_modal = document.getElementById('contact_modal');
     modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', false);
     contact_modal.focus();
 }
 
 function closeModal() {
     const modal = document.getElementById('contact_modal');
+    modal.setAttribute('aria-hidden', true);
     modal.style.display = 'none';
 }
 

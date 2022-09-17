@@ -24,8 +24,8 @@
     <div class="photograph-header"></div>
     <div class="filter">
       <div>Trier par : </div>
-      <div class="custom-select">
-        <ul role="navigation" class="select">
+      <div role="navigation" class="custom-select">
+        <ul class="select">
           <li>
             <input class="select_close" type="radio" name="customselect" id="customselect-close" value="popularite" />
             <span class="select_label select_label-placeholder">Popularité</span>
@@ -33,24 +33,25 @@
 
           <li class="select_items">
             <input class="select_expand" type="radio" name="customselect" id="customselect-opener" />
-            <label tabindex="0" class="select_closeLabel" for="customselect-close"></label>
+            <label id="pop" class="select_closeLabel" for="customselect-close"></label>
 
             <ul class="select_options">
               <li class="select_option">
                 <input class="select_input" type="radio" name="customselect" id="customselect-date" value="date" />
-                <label tabindex="0" class="select_label" for="customselect-date">
+                <label id="date" class="select_label" for="customselect-date">
                   <span class="border-top">Date</span>
                 </label>
               </li>
               <li class="select_option">
                 <input class="select_input" type="radio" name="customselect" id="customselect-titre" value="titre" />
-                <label tabindex="0" class="select_label" for="customselect-titre">
+                <label id="titre" class="select_label" for="customselect-titre">
                   <span class="border-top">Titre</span>
                 </label>
               </li>
             </ul>
 
-            <label tabindex="0" class="select_expandLabel" for="customselect-opener" aria-haspopup="true"></label>
+            <label tabindex="0" id="opener" class="select_expandLabel" for="customselect-opener"
+              aria-haspopup="true"></label>
 
           </li>
         </ul>

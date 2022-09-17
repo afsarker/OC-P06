@@ -38,6 +38,7 @@ main .photograph-header img {
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2666666667);
 }
 main .photograph-header h2 {
   color: #D3573C;
@@ -211,6 +212,7 @@ main .photograph-content video {
   height: 300px;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2666666667);
 }
 main .photograph-content img {
   object-fit: cover;
@@ -365,6 +367,13 @@ main .photograph-content video {
   transform: translate(-50%, -50%);
   object-fit: contain;
   border-radius: 10px;
+}
+#lightbox .media-lightbox-title {
+  position: absolute;
+  left: 140px;
+  bottom: 2%;
+  font-size: 24px;
+  color: #901C1C;
 }
 
 #likes-price {
