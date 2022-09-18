@@ -180,6 +180,7 @@ function displayLightboxImage() {
             lightboxImage.alt = image.alt;
             const imgpath = image.src.split('/');
             const imgName = imgpath[imgpath.length - 1];
+            mediaTitle.innerText = lightboxImage.alt;
             index = mediaTitles.indexOf(imgName);
             closeLightbox.focus();
         });
@@ -187,8 +188,10 @@ function displayLightboxImage() {
     preventSpace();
 }
 
+const mediaTitle = document.getElementById('media-lightbox-title');
 function displayLightboxVideo() {
     const videos = document.querySelectorAll('.photograph-content video');
+
     videos.forEach((video) => {
         video.addEventListener('click', () => {
             hide(main);
@@ -200,6 +203,8 @@ function displayLightboxVideo() {
             const videopath = LightboxVideoSrc.src.split('/');
             const videoname = videopath[videopath.length - 1];
             index = mediaTitles.indexOf(videoname);
+            const videoTitle = videoname.split('.')[0].replaceAll('_', ' ');
+            mediaTitle.innerText = videoTitle;
             closeLightbox.focus();
         });
     });
@@ -222,12 +227,17 @@ function slider(sens) {
         hide(lightboxVideo);
         show(lightboxImage);
         lightboxImage.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
+        const lightboxImageTitle = mediaTitles[index].split('.')[0].replaceAll('_', ' ');
+        lightboxImage.alt = lightboxImageTitle;
+        mediaTitle.innerText = lightboxImageTitle;
     } else {
         hide(lightboxImage);
         show(lightboxVideo);
         const LightboxVideoSrc = document.querySelector('video source');
         lightboxVideo.appendChild(LightboxVideoSrc);
         LightboxVideoSrc.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
+        const videoTitle = mediaTitles[index].split('.')[0].replaceAll('_', ' ');
+        mediaTitle.innerText = videoTitle;
     }
 }
 

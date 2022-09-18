@@ -28,7 +28,7 @@ function photographerFactory(data) {
 									<p class="tagline">${tagline}</p>
 								</div>
 							</div>
-							<button class="contact_button" id="contact-button" role="button" aria-label="Contactez-moi" tabindex="0">Contactez-moi</button>
+							<button class="contact_button" id="contact-button" role="button" aria-label="Formulaire de contact de ${name}" tabindex="0">Contactez-moi</button>
 							<img src="${picture}" alt="Photo de ${name}" /> `;
 	}
 

@@ -374,6 +374,7 @@ main .photograph-content video {
   bottom: 2%;
   font-size: 24px;
   color: #901C1C;
+  font-weight: 400;
 }
 
 #likes-price {

@@ -32,7 +32,8 @@
           </li>
 
           <li class="select_items">
-            <input class="select_expand" type="radio" name="customselect" id="customselect-opener" />
+            <input class="select_expand" type="radio" name="customselect" id="customselect-opener"
+              aria-label="trier par popularité" />
             <label id="pop" class="select_closeLabel" for="customselect-close"></label>
 
             <ul class="select_options">
@@ -44,7 +45,7 @@
               </li>
               <li class="select_option">
                 <input class="select_input" type="radio" name="customselect" id="customselect-titre" value="titre" />
-                <label id="titre" class="select_label" for="customselect-titre">
+                <label id="titre" class="select_label" for="customselect-titre" aria-label="trier par titre">
                   <span class="border-top">Titre</span>
                 </label>
               </li>
@@ -60,39 +61,43 @@
     </div>
     <div class="photograph-content"></div>
   </main>
-  <div id="contact_modal" role="dialog">
+  <div id="contact_modal" aria-hidden="true">
     <div class="modal" id="modal" tabindex="0">
       <header>
-        <h2 role="heading" aria-level="2">Contactez-moi<span id="name"></span></h2>
-        <img src="assets/icons/close.svg" id="close-form" alt="Close Contact Form" tabindex="0" />
+        <h2 role="heading">Contactez-moi<span id="name"></span></h2>
+        <img src="assets/icons/close.svg" id="close-form" alt="Fermer la modale" tabindex="0" />
       </header>
       <form id="formulaire-contact">
         <div>
           <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" tabindex="0" />
+          <input type="text" id="prenom" tabindex="0" aria-required="true" />
         </div>
         <div>
           <label for="nom">Nom</label>
-          <input type="text" id="nom" tabindex="0" />
+          <input type="text" id="nom" tabindex="0" aria-required="true" />
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" tabindex="0" />
+          <input type="email" id="email" tabindex="0" aria-required="true" />
         </div>
         <div>
           <label for="message">Votre Message</label>
-          <textarea id="message" tabindex="0" aria-labelledby="formulaire-contact message"></textarea>
+          <textarea id="message" tabindex="0" aria-labelledby="formulaire-contact message"
+            aria-required="true"></textarea>
         </div>
-        <button class="contact_button" role="button" aria-label="Send" tabindex="0">Envoyer</button>
+        <button class="contact_button" role="button" aria-label="Envoyer" tabindex="0">Envoyer</button>
       </form>
     </div>
   </div>
-  <div id="lightbox" role="dialog">
-    <div class="close" tabindex="0"><i class="fa-solid fa-xmark"></i></div>
-    <div class="left" id="previous-media" tabindex="0"><i class="fa-solid fa-chevron-left"></i></div>
+  <div id="lightbox" role="dialog" aria-label="carrousel">
+    <div class="close" tabindex="0" aria-label="fermer la modale"><i class="fa-solid fa-xmark"></i></div>
+    <div class="left" id="previous-media" tabindex="0" aria-label="média précédent"><i
+        class="fa-solid fa-chevron-left"></i></div>
     <div class="img"><img id="img" src="#" alt="lightbox image" /></div>
     <div class="video"><video id="video" controls></video></div>
-    <div class="right" id="next-media" tabindex="0"><i class="fa-solid fa-chevron-right"></i></div>
+    <h2 class="media-lightbox-title" id="media-lightbox-title"></h2>
+    <div class="right" id="next-media" tabindex="0" aria-label="média suivant"><i class="fa-solid fa-chevron-right"></i>
+    </div>
   </div>
   <div id="likes-price">
     <div id="likes"></div>
