@@ -81,14 +81,10 @@ async function init() {
     const modal = document.getElementById('modal');
 
     contactForm.addEventListener('click', () => {
-        main.setAttribute('aria-hidden', true);
-        modal.setAttribute('aria-hidden', false);
         displayModal();
         modal.focus();
     });
     closeForm.addEventListener('click', () => {
-        main.setAttribute('aria-hidden', false);
-        modal.setAttribute('aria-hidden', true);
         closeModal();
     });
     modal.addEventListener('keyup', (e) => {
@@ -165,6 +161,15 @@ previousMedia.addEventListener('click', () => {
 nextMedia.addEventListener('click', () => {
     slider(1);
 });
+// changement de media au clavier dans la lightbox 
+lightbox.addEventListener('keydown', (e) => {
+    if (e.keyCode === 39) { // Fleche droite clavier
+        slider(1);
+    } else if (e.keyCode === 37) { // gauche
+        slider(-1);
+    }
+});
+
 
 function displayLightboxImage() {
 
@@ -311,6 +316,7 @@ function removeAllChildNodes(parent) {
     }
 }
 
+//combobox tri
 const opener = document.getElementById('opener');
 const poplabel = document.getElementById('pop');
 const datelabel = document.getElementById('date');
