@@ -13,6 +13,9 @@ const titre = document.querySelector('#customselect-titre');
 let mediaTitles = [];
 let allLikes = 0;
 
+/*****************************************************************************************/
+// getPhotographersAllInfos fetch les donnees puis retourne allInfos et photographerMedias
+/*****************************************************************************************/
 async function getPhotographersAllInfos() {
     const photographersApi = new PhotographersApi('./data/photographers.json', 'photographers');
 
@@ -28,6 +31,10 @@ async function getPhotographersAllInfos() {
     return { allInfos, photographerMedias };
 }
 
+
+/*****************************************************************************************/
+// displayData va afficher la data (en parametre) et la formater selon les factories
+/*****************************************************************************************/
 async function displayData(photographer) {
     const photographersSection = document.querySelector('.photograph-header');
     const content = document.querySelector('.photograph-content');
@@ -65,16 +72,14 @@ async function displayData(photographer) {
                 allLikes++;
                 TotalikesElement.innerHTML = `${allLikes} <i class="fa-solid fa-heart full-heart">`;
             }
+            if (count === 2) {// permet de décrementer le like une seule fois par media
+                element.querySelector('span').innerText--;
+                allLikes--;
+                TotalikesElement.innerHTML = `${allLikes} <i class="fa-solid fa-heart full-heart">`;
+                count = 0;
+            }
         });
     });
-}
-
-async function init() {
-    const allInfos = await (await getPhotographersAllInfos()).allInfos;
-    const photographerMedias = await (await getPhotographersAllInfos()).photographerMedias;
-
-    displayData(allInfos);
-
     // ouvre et ferme le formulaire
     const contactForm = document.getElementById('contact-button');
     const closeForm = document.getElementById('close-form');
@@ -110,33 +115,23 @@ async function init() {
     // Gestion de la lightbox
     displayLightboxImage();
     displayLightboxVideo();
-    lightbox.focus();
-    closeLightbox.focus();
 
+}
 
-    // Gestion des filtres
-    popularity.addEventListener('click', () => {
-        removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byPopularity));
-        displayLightboxImage();
-        displayLightboxVideo();
-    });
-    date.addEventListener('click', () => {
-        removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byDate));
-        displayLightboxImage();
-        displayLightboxVideo();
-    });
-    titre.addEventListener('click', () => {
-        removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byTitle));
-        displayLightboxImage();
-        displayLightboxVideo();
-    });
+/*****************************************************************************************/
+// init exectute displayData lors du chargement de la page et aussi en lors du tri 
+/*****************************************************************************************/
+async function init() {
+
+    const { allInfos, photographerMedias } = await getPhotographersAllInfos();
+
+    displayData(allInfos);
+
+    applyFilter(photographerMedias);
+
 }
 
 init();
-
 
 
 //------------------------//------------------------//------------------------//------------------------//
@@ -149,6 +144,8 @@ const previousMedia = document.getElementById('previous-media');
 const nextMedia = document.getElementById('next-media');
 const lightboxImage = document.querySelector('#img');
 const lightboxVideo = document.querySelector('#video');
+const mediaTitle = document.getElementById('media-lightbox-title');
+
 // icone X
 closeLightbox.addEventListener('click', () => {
     hide(lightbox);
@@ -174,18 +171,17 @@ lightbox.addEventListener('keydown', (e) => {
 function displayLightboxImage() {
 
     const images = document.querySelectorAll('.photograph-content img');
-    const lightbox = document.getElementById('lightbox');
     images.forEach(image => {
         image.addEventListener('click', () => {
             hide(main);
             hide(lightboxVideo);
             show(lightbox);
             show(lightboxImage);
+            mediaTitle.innerText = image.alt;
             lightboxImage.src = image.src;
             lightboxImage.alt = image.alt;
             const imgpath = image.src.split('/');
             const imgName = imgpath[imgpath.length - 1];
-            mediaTitle.innerText = lightboxImage.alt;
             index = mediaTitles.indexOf(imgName);
             closeLightbox.focus();
         });
@@ -193,10 +189,10 @@ function displayLightboxImage() {
     preventSpace();
 }
 
-const mediaTitle = document.getElementById('media-lightbox-title');
-function displayLightboxVideo() {
-    const videos = document.querySelectorAll('.photograph-content video');
+async function displayLightboxVideo() {
+    const { photographerMedias } = await getPhotographersAllInfos();
 
+    const videos = document.querySelectorAll('.photograph-content video');
     videos.forEach((video) => {
         video.addEventListener('click', () => {
             hide(main);
@@ -208,8 +204,7 @@ function displayLightboxVideo() {
             const videopath = LightboxVideoSrc.src.split('/');
             const videoname = videopath[videopath.length - 1];
             index = mediaTitles.indexOf(videoname);
-            const videoTitle = videoname.split('.')[0].replaceAll('_', ' ');
-            mediaTitle.innerText = videoTitle;
+            mediaTitle.innerText = photographerMedias[index].title;
             closeLightbox.focus();
         });
     });
@@ -220,8 +215,11 @@ function displayLightboxVideo() {
 //------------------------//------------------------//------------------------//------------------------//
 
 let index = 0;
-function slider(sens) {
+async function slider(sens) {
+    const { photographerMedias } = await getPhotographersAllInfos();
+
     index += sens;
+
     if (index < 0) {
         index = mediaTitles.length - 1;
     }
@@ -232,17 +230,14 @@ function slider(sens) {
         hide(lightboxVideo);
         show(lightboxImage);
         lightboxImage.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
-        const lightboxImageTitle = mediaTitles[index].split('.')[0].replaceAll('_', ' ');
-        lightboxImage.alt = lightboxImageTitle;
-        mediaTitle.innerText = lightboxImageTitle;
+        mediaTitle.innerText = photographerMedias[index].title;
     } else {
         hide(lightboxImage);
         show(lightboxVideo);
         const LightboxVideoSrc = document.querySelector('video source');
         lightboxVideo.appendChild(LightboxVideoSrc);
         LightboxVideoSrc.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
-        const videoTitle = mediaTitles[index].split('.')[0].replaceAll('_', ' ');
-        mediaTitle.innerText = videoTitle;
+        mediaTitle.innerText = photographerMedias[index].title;
     }
 }
 
@@ -256,6 +251,7 @@ function show(element) {
 //------------------------//------------------------//------------------------//------------------------//
 //----------------- Gestion des touches entrée et espace lors de la navigation au clavier --------------//
 //------------------------//------------------------//------------------------//------------------------//
+
 function preventSpace() {
     const links = document.querySelectorAll('a');
     const likes = document.querySelectorAll('p.likes');
@@ -279,6 +275,27 @@ function preventSpace() {
 //----------------- -----------------------    Fonctions de tri   --------------------------------------//
 //------------------------//------------------------//------------------------//------------------------//
 
+
+function applyFilter(photographerMedias) {
+    popularity.addEventListener('click', () => {
+        removeAllChildNodes(content);
+        displayData(photographerMedias.sort(byPopularity));
+        displayLightboxImage();
+        displayLightboxVideo();
+    });
+    date.addEventListener('click', () => {
+        removeAllChildNodes(content);
+        displayData(photographerMedias.sort(byDate));
+        displayLightboxImage();
+        displayLightboxVideo();
+    });
+    titre.addEventListener('click', () => {
+        removeAllChildNodes(content);
+        displayData(photographerMedias.sort(byTitle));
+        displayLightboxImage();
+        displayLightboxVideo();
+    });
+}
 
 function byPopularity(a, b) {
     if (a.likes > b.likes) {

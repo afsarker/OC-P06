@@ -10,13 +10,13 @@ function photographerFactory(data) {
 		return article = ` 	<article  aria-label="profil de ${name}">
 								<a href="photographer.html?id=${id}" aria-label="voir le profil de ${name}" id="profil-link-${id}" class="profil-link">
 									<div class="reflect">
-										<img src="${picture}" alt="Photo de ${name}" aria-label="Photo de ${name}" tabindex="0" />
+										<img src="${picture}" alt="Photo de ${name}" aria-label="Photo de ${name}"/>
 									</div>
-									<h2 tabindex="0">${name}</h2>
+									<h2>${name}</h2>
 								</a>
-								<p class="localisation" tabindex="0">${city}, ${country}</p>
-								<p tabindex="0">${tagline}</p>
-								<p class="price" tabindex="0">${price}€/jour</p>
+								<p class="localisation">${city}, ${country}</p>
+								<p>${tagline}</p>
+								<p class="price">${price}€/jour</p>
 							</article> `;
 	}
 
