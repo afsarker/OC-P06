@@ -17,15 +17,32 @@ header {
   align-items: center;
   height: 90px;
 }
+@media screen and (max-width: 700px) {
+  header {
+    flex-direction: column;
+  }
+}
 
 h1 {
   color: #901C1C;
   margin-right: 100px;
 }
+@media screen and (max-width: 700px) {
+  h1 {
+    margin: 30px auto;
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .logo {
   height: 50px;
   margin-left: 100px;
+}
+@media screen and (max-width: 700px) {
+  .logo {
+    margin: 20px 0;
+  }
 }
 
 a {
@@ -38,6 +55,11 @@ a {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin: 100px 0;
+}
+@media screen and (max-width: 700px) {
+  .photographer_section {
+    grid-template-columns: 1fr;
+  }
 }
 .photographer_section article {
   justify-self: center;
@@ -72,13 +94,33 @@ a {
   color: #D3573C;
   font-size: 36px;
 }
+@media screen and (max-width: 700px) {
+  .photographer_section article h2 {
+    font-size: 11vw;
+  }
+}
 .photographer_section article .localisation {
   color: #901C1C;
   font-size: 18px;
 }
+@media screen and (max-width: 700px) {
+  .photographer_section article .localisation {
+    font-size: 7vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  .photographer_section article .tagline {
+    font-size: 6vw;
+  }
+}
 .photographer_section article .price {
   color: #757575;
   font-size: 13px;
+}
+@media screen and (max-width: 700px) {
+  .photographer_section article .price {
+    font-size: 5vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
