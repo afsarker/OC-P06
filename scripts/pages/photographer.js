@@ -123,11 +123,11 @@ async function displayData(photographer) {
 /*****************************************************************************************/
 async function init() {
 
-    const { allInfos, photographerMedias } = await getPhotographersAllInfos();
+    const { allInfos } = await getPhotographersAllInfos();
 
     displayData(allInfos);
 
-    applyFilter(photographerMedias);
+    applyFilter();
 
 }
 
@@ -226,10 +226,10 @@ async function slider(sens) {
     if (index > mediaTitles.length - 1) {
         index = 0;
     }
-    if (mediaTitles[index].includes('jpg')) {
+    if (photographerMedias[index].image) {
         hide(lightboxVideo);
         show(lightboxImage);
-        lightboxImage.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
+        lightboxImage.src = `./assets/photographers/${id}/${photographerMedias[index].image}`;
         mediaTitle.innerText = photographerMedias[index].title;
     } else {
         hide(lightboxImage);
@@ -276,22 +276,29 @@ function preventSpace() {
 //------------------------//------------------------//------------------------//------------------------//
 
 
-function applyFilter(photographerMedias) {
+async function applyFilter() {
+    const { photographerMedias } = await getPhotographersAllInfos();
     popularity.addEventListener('click', () => {
         removeAllChildNodes(content);
         displayData(photographerMedias.sort(byPopularity));
+        photographerMedias.sort(byPopularity);
+        mediaTitles.sort(byPopularity);
         displayLightboxImage();
         displayLightboxVideo();
     });
     date.addEventListener('click', () => {
         removeAllChildNodes(content);
         displayData(photographerMedias.sort(byDate));
+        photographerMedias.sort(byDate);
+        mediaTitles.sort(byDate);
         displayLightboxImage();
         displayLightboxVideo();
     });
     titre.addEventListener('click', () => {
         removeAllChildNodes(content);
         displayData(photographerMedias.sort(byTitle));
+        photographerMedias.sort(byTitle);
+        mediaTitles.sort(byTitle);
         displayLightboxImage();
         displayLightboxVideo();
     });
