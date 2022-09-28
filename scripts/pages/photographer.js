@@ -11,6 +11,7 @@ const date = document.querySelector('#customselect-date');
 const titre = document.querySelector('#customselect-titre');
 
 let mediaTitles = [];
+let imgNames = [];
 let allLikes = 0;
 
 /*****************************************************************************************/
@@ -27,6 +28,10 @@ async function getPhotographersAllInfos() {
         }
     });
     const allInfos = photographersInfos.concat(photographersMedias);
+
+    photographerMedias.forEach(media => {
+        imgNames.push(media.title);
+    });
 
     return { allInfos, photographerMedias };
 }
@@ -190,7 +195,6 @@ function displayLightboxImage() {
 }
 
 async function displayLightboxVideo() {
-    const { photographerMedias } = await getPhotographersAllInfos();
 
     const videos = document.querySelectorAll('.photograph-content video');
     videos.forEach((video) => {
@@ -204,7 +208,7 @@ async function displayLightboxVideo() {
             const videopath = LightboxVideoSrc.src.split('/');
             const videoname = videopath[videopath.length - 1];
             index = mediaTitles.indexOf(videoname);
-            mediaTitle.innerText = photographerMedias[index].title;
+            mediaTitle.innerText = imgNames[index];
             closeLightbox.focus();
         });
     });
@@ -216,7 +220,6 @@ async function displayLightboxVideo() {
 
 let index = 0;
 async function slider(sens) {
-    const { photographerMedias } = await getPhotographersAllInfos();
 
     index += sens;
 
@@ -226,18 +229,18 @@ async function slider(sens) {
     if (index > mediaTitles.length - 1) {
         index = 0;
     }
-    if (photographerMedias[index].image) {
+    if (mediaTitles[index].includes('jpg')) {
         hide(lightboxVideo);
         show(lightboxImage);
-        lightboxImage.src = `./assets/photographers/${id}/${photographerMedias[index].image}`;
-        mediaTitle.innerText = photographerMedias[index].title;
+        lightboxImage.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
+        mediaTitle.innerText = imgNames[index];
     } else {
         hide(lightboxImage);
         show(lightboxVideo);
         const LightboxVideoSrc = document.querySelector('video source');
         lightboxVideo.appendChild(LightboxVideoSrc);
         LightboxVideoSrc.src = `./assets/photographers/${id}/${mediaTitles[index]}`;
-        mediaTitle.innerText = photographerMedias[index].title;
+        mediaTitle.innerText = imgNames[index];
     }
 }
 
@@ -254,11 +257,10 @@ function show(element) {
 
 function preventSpace() {
     const links = document.querySelectorAll('a');
-    const likes = document.querySelectorAll('p.likes');
     const medias = document.querySelectorAll('.photograph-content img, .photograph-content video');
     const tabindex = document.querySelectorAll('[tabindex]');
 
-    const clickableElements = [...links, ...likes, ...medias, ...tabindex];
+    const clickableElements = [...links, ...medias, ...tabindex];
 
     clickableElements.forEach((clickableElement) => {
         clickableElement.addEventListener('keypress', e => {
@@ -275,32 +277,38 @@ function preventSpace() {
 //----------------- -----------------------    Fonctions de tri   --------------------------------------//
 //------------------------//------------------------//------------------------//------------------------//
 
-
 async function applyFilter() {
+
     const { photographerMedias } = await getPhotographersAllInfos();
     popularity.addEventListener('click', () => {
         removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byPopularity));
-        photographerMedias.sort(byPopularity);
         mediaTitles.sort(byPopularity);
+        photographerMedias.sort(byPopularity);
+        pushMediaNamesSorted(photographerMedias);
+        displayData(photographerMedias);
         displayLightboxImage();
         displayLightboxVideo();
+        preventSpace();
     });
     date.addEventListener('click', () => {
         removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byDate));
-        photographerMedias.sort(byDate);
         mediaTitles.sort(byDate);
+        photographerMedias.sort(byDate);
+        pushMediaNamesSorted(photographerMedias);
+        displayData(photographerMedias);
         displayLightboxImage();
         displayLightboxVideo();
+        preventSpace();
     });
     titre.addEventListener('click', () => {
         removeAllChildNodes(content);
-        displayData(photographerMedias.sort(byTitle));
-        photographerMedias.sort(byTitle);
         mediaTitles.sort(byTitle);
+        photographerMedias.sort(byTitle);
+        pushMediaNamesSorted(photographerMedias);
+        displayData(photographerMedias);
         displayLightboxImage();
         displayLightboxVideo();
+        preventSpace();
     });
 }
 
@@ -330,6 +338,13 @@ function byTitle(a, b) {
     } else {
         return 0;
     }
+}
+
+function pushMediaNamesSorted(photographerMedias) {
+    imgNames = [];
+    photographerMedias.forEach(media => {
+        imgNames.push(media.title);
+    });
 }
 
 function removeAllChildNodes(parent) {

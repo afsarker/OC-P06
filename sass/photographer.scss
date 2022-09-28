@@ -1,4 +1,4 @@
-@import './utils/mixins';
+@import './mixins';
 
 * {
     box-sizing: border-box;
@@ -273,16 +273,18 @@ main {
     }
 
     .photograph-content {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
         article {
             margin: 15px 25px 10px 0;
-            width: 300px;
+            width: 100%;
 
             @include mobiles {
-                margin: 25px 15px;
-                width: 100%;
+                margin: 25px auto;
+                width: 95%;
             }
 
             .content-infos {
@@ -475,7 +477,7 @@ main {
     }
 
     .left {
-        left: 100px;
+        left: 3%;
 
         @include mobiles {
             left: 0;
@@ -483,7 +485,7 @@ main {
     }
 
     .right {
-        right: 100px;
+        right: 3%;
 
         @include mobiles {
             right: 0;
@@ -503,6 +505,10 @@ main {
             right: 0;
             padding: 10px 20px;
         }
+    }
+
+    .img {
+        height: 100vh;
     }
 
     img,
